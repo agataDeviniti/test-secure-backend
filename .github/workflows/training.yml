@@ -11,8 +11,9 @@ jobs:
       with:
         distribution: 'temurin'
         java-version: '17'
-        cache: 'gradle'
-    - run: 
+        cache: 'maven'
+    - name: Build with Maven
+      run: mvn -B package --file pom.xml
         ./gradlew build --no-daemon
         run common
   
