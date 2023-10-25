@@ -14,6 +14,16 @@ jobs:
       with:
         distribution: 'temurin'
         java-version: '17'
+
     - name: Build with Maven
       run: 
-        ./mvnw clean package spring-boot:repackage  
+        ./mvnw clean package spring-boot:repackage
+
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: my-artifact
+        path: target/jwt-auth-service-1.0.0.jar
+        
+    - name: Download artifact
+      uses: actions/download-artifact@v3
